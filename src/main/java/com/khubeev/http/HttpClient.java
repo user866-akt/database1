@@ -1,4 +1,4 @@
-package com.solncev.http;
+package com.khubeev.http;
 
 import java.util.Map;
 

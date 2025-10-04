@@ -1,4 +1,7 @@
-package com.solncev.servlet;
+package com.khubeev.servlet;
+
+import com.khubeev.service.UserService;
+import com.khubeev.service.impl.UserServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -11,6 +14,8 @@ import java.io.IOException;
 @WebServlet(name = "Login", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 
+    private final UserService userService = new UserServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.sendRedirect("login.html");
@@ -21,24 +26,22 @@ public class LoginServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        if ("login".equalsIgnoreCase(login) && "password".equalsIgnoreCase(password)) {
-            // logic to authenticate user
+        if (userService.authenticate(login, password)) {
+            var user = userService.getByLogin(login);
 
-            // session
             HttpSession httpSession = req.getSession();
-            httpSession.setAttribute("user", login);
+            httpSession.setAttribute("user", user);
+            httpSession.setAttribute("userLogin", user.getLogin());
+            httpSession.setAttribute("userName", user.getName());
             httpSession.setMaxInactiveInterval(60 * 60);
 
-            // cookie
-            Cookie cookie = new Cookie("user", login);
+            Cookie cookie = new Cookie("user", user.getLogin());
             cookie.setMaxAge(24 * 60 * 60);
-
             resp.addCookie(cookie);
 
             resp.sendRedirect("main.jsp");
         } else {
-            resp.sendRedirect("/login");
+            resp.sendRedirect("/login?error=invalid_credentials");
         }
     }
-
 }

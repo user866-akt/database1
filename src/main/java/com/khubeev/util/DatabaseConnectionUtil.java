@@ -1,4 +1,4 @@
-package com.solncev.util;
+package com.khubeev.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

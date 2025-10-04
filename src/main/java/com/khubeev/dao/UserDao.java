@@ -1,6 +1,6 @@
-package com.solncev.dao;
+package com.khubeev.dao;
 
-import com.solncev.entity.User;
+import com.khubeev.entity.User;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,4 +13,7 @@ public interface UserDao {
 
     User getById(Integer id);
 
+    User getByLogin(String login);
+
+    boolean existsByLogin(String login);
 }

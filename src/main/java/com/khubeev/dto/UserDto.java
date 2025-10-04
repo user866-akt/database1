@@ -1,4 +1,4 @@
-package com.solncev.dto;
+package com.khubeev.dto;
 
 public class UserDto {
 

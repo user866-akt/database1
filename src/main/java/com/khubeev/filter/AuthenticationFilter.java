@@ -1,4 +1,4 @@
-package com.solncev.filter;
+package com.khubeev.filter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

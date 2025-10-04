@@ -1,8 +1,8 @@
-package com.solncev.servlet;
+package com.khubeev.servlet;
 
-import com.solncev.dto.UserDto;
-import com.solncev.service.UserService;
-import com.solncev.service.impl.UserServiceImpl;
+import com.khubeev.dto.UserDto;
+import com.khubeev.service.UserService;
+import com.khubeev.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

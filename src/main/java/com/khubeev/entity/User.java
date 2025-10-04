@@ -1,4 +1,4 @@
-package com.solncev.entity;
+package com.khubeev.entity;
 
 public class User {
 
@@ -37,5 +37,24 @@ public class User {
     public String getPassword() {
         return password;
     }
-}
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
