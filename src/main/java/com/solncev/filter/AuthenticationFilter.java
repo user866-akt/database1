@@ -22,8 +22,10 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpSession session = ((HttpServletRequest) request).getSession(false);
-        if (session == null && (!((HttpServletRequest) request).getRequestURI().contains("login"))) {
+        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        String uri = httpServletRequest.getRequestURI();
+        HttpSession session = httpServletRequest.getSession(false);
+        if (session == null && !uri.contains("login")) {
             ((HttpServletResponse) response).sendRedirect("/login");
         } else {
             chain.doFilter(request, response);
